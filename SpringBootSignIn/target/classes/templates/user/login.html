@@ -1,0 +1,67 @@
+ 
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+<head>
+<title>Sign in</title>
+<link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+	rel="stylesheet" id="bootstrap-css">
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+<script src="https://code.jquery.com/jquery-1.11.1.min.js"></script>
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.0.0/css/font-awesome.min.css">
+</head>
+<body>
+	<script>
+		function openCity(evt, cityName) {
+			var i, tabcontent, tablinks;
+			tabcontent = document.getElementsByClassName("tabcontent");
+			for (i = 0; i < tabcontent.length; i++) {
+				tabcontent[i].style.display = "none";
+			}
+			tablinks = document.getElementsByClassName("tablinks");
+			for (i = 0; i < tablinks.length; i++) {
+				tablinks[i].className = tablinks[i].className.replace(
+						" active", "");
+			}
+			document.getElementById(cityName).style.display = "block";
+			evt.currentTarget.className += " active";
+		}
+	</script>
+</body>
+<style>
+body { background-size: cover; }
+</style>
+
+<body>
+	<div class="container" align="left">
+		&nbsp;<h2 style="color: #000000; font-family: Calibri; font-size: -webkit-xxx-large;" "width:80%" align="left" "font-family:fantasy">Just Another Spring Project!</h2>
+
+		<div class="alert alert-danger" role="alert" th:if="${param.error}">
+			The email or password is incorrect!
+		</div>
+		
+		<form th:action="@{/login}" method="post">
+			<i>
+				<h3 class="h3 mb-3 font-weight-normal" style="color: #000000">Sign in</h3>
+			</i>
+			
+			<label for="inputEmail" class="sr-only">Email</label> 
+			
+			<input Style="width: 40%" align="center" type="email" id="email" name="email" class="form-control" placeholder="Email" required autofocus>
+			
+			<label for="inputPassword" class="sr-only">Password</label>
+			
+			<input Style="width: 40%" align="center" type="password" id="password" name="password" class="form-control" placeholder="Password" required>
+			
+			<div class="checkbox mb-3">
+				<label style="color: #000000"> <input type="checkbox" name="remember-me"/> Remember me</label>
+			</div>
+			
+			<button class="btn bj f tn-lg btn-primary btn-block" Style="width: 40%" align="center" type="submit">Sign in</button>
+			
+			<div class="margin-top20 text-left" style="color: #000000"" width:40%" align="center">
+				Don't have an account? <a th:href="@{/signup}">Create an account</a>
+			</div>
+		</form>
+	</div>
+</body>
+</html>
